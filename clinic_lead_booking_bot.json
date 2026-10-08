@@ -1,0 +1,345 @@
+{
+  "name": "Omnichannel Clinic Lead Gen & Booking Bot",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -240,
+        220
+      ],
+      "id": "chat-trigger-1",
+      "name": "When chat message received (Testing)"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "clinic-bot",
+        "responseMode": "onReceived",
+        "responseData": "allEntries",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -240,
+        420
+      ],
+      "id": "webhook-trigger-1",
+      "name": "WhatsApp / Instagram Webhook"
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $json.body;\nlet phone = 'test_chat';\nlet text = '';\n\nif (body && body.entry && body.entry[0].changes && body.entry[0].changes[0].value && body.entry[0].changes[0].value.messages) {\n  const msg = body.entry[0].changes[0].value.messages[0];\n  phone = msg.from;\n  text = msg.text ? msg.text.body : '';\n} else if ($json.chatInput) {\n  text = $json.chatInput;\n  phone = $json.sessionId || 'test_chat';\n}\n\nif (!text) {\n  return [];\n}\n\nreturn [{\n  json: {\n    sessionId: phone,\n    patient_phone: phone,\n    chatInput: text\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        40,
+        320
+      ],
+      "id": "code-extract-msg",
+      "name": "Extract Message"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.chatInput }}",
+        "options": {
+          "systemMessage": "You are Sarah, the Patient Care Coordinator for 'Apex Dental & Aesthetics Clinic'.\n\nYOUR GOAL:\nProvide formal, professional assistance for patient inquiries, capture intake contact information, schedule clinical consultations, and triage urgent inquiries to medical staff.\n\nCOMMUNICATION STYLE RULES:\n- Do NOT use emojis under any circumstances (no asterisks, sparkles, sirens, or icons). Keep the tone authoritative, polite, and medical-grade.\n\nCLINIC KNOWLEDGE (ONLY USE THIS INFORMATION):\n- Hours: Monday through Saturday, 9:00 AM to 6:00 PM. Closed on Sundays.\n- Address: 120 Market Street, Suite 4B.\n- Approved Services & Fees:\n  * Routine Prophylaxis (Cleaning): $80\n  * In-Office Laser Teeth Whitening: $250\n  * Initial Consultation & 3D Scan: $0 (Complimentary)\n  * Invisalign Clear Aligners: From $1,800 (requires consultation)\n  * Urgent Tooth Extraction: $150\n\nSTRICT BEHAVIOR RULES:\n1. Never guess or quote fees for treatments not listed above. For unlisted services, state: 'That treatment is not currently in our standard fee schedule. I have recorded your inquiry for our clinical manager to follow up directly.'\n2. Do NOT provide medical prescriptions or clinical diagnoses.\n3. LEAD INTAKE: When a patient requests an appointment or inquires about treatment scheduling, collect their:\n   - Full Legal Name\n   - Phone Number\n   - Preferred Date & Time\n   Once received, invoke the 'Capture_Lead_To_CRM' tool.\n4. APPOINTMENT SCHEDULING: Once details are gathered, call the 'Book_Google_Calendar' tool to confirm the slot.\n5. CLINICAL TRIAGE & EMERGENCIES: If the patient mentions severe pain, uncontrolled bleeding, trauma, or demands human assistance, immediately invoke 'Escalate_To_Human_Staff' with the reason and patient contact, and respond: 'I have notified our clinical triage desk and front-desk manager immediately. A member of our clinical staff will reach out to you directly.'"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        280,
+        320
+      ],
+      "id": "ai-agent-1",
+      "name": "Clinic AI Receptionist Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.5-flash-lite",
+        "options": {
+          "temperature": 0.2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        220,
+        540
+      ],
+      "id": "gemini-model-1",
+      "name": "Google Gemini (Free AI Brain)",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "TEGqABI4FPNBIAEV",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        360,
+        540
+      ],
+      "id": "memory-window-1",
+      "name": "Conversation Memory"
+    },
+    {
+      "parameters": {
+        "name": "Capture_Lead_To_CRM",
+        "description": "Call this tool whenever a customer provides their name and phone number to log them as a qualified lead into the clinic database.",
+        "language": "javaScript",
+        "jsCode": "return `Lead successfully recorded in CRM: ${query}`;"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.1,
+      "position": [
+        520,
+        540
+      ],
+      "id": "tool-lead-capture",
+      "name": "Capture_Lead_To_CRM"
+    },
+    {
+      "parameters": {
+        "name": "Book_Google_Calendar",
+        "description": "Call this tool to book a confirmed consultation slot on the clinic's Google Calendar.",
+        "language": "javaScript",
+        "jsCode": "return `Appointment successfully scheduled in Google Calendar: ${query}`;"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.1,
+      "position": [
+        680,
+        540
+      ],
+      "id": "tool-calendar-booking",
+      "name": "Book_Google_Calendar"
+    },
+    {
+      "parameters": {
+        "name": "Escalate_To_Human_Staff",
+        "description": "Call this tool to trigger an urgent alert to clinic staff when the customer has an emergency or requests a human manager.",
+        "language": "javaScript",
+        "jsCode": "return `URGENT ALERT SENT TO CLINIC MANAGER: ${query}`;"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.1,
+      "position": [
+        840,
+        540
+      ],
+      "id": "tool-human-escalation",
+      "name": "Escalate_To_Human_Staff"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "cond-is-wa",
+              "leftValue": "={{ $('Extract Message').first().json.patient_phone }}",
+              "rightValue": "test_chat",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        560,
+        320
+      ],
+      "id": "if-is-whatsapp",
+      "name": "Is Real WhatsApp?"
+    },
+    {
+      "parameters": {
+        "jsCode": "// On-screen chat test: pass through result so Chat displays Sarah's response\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        780,
+        420
+      ],
+      "id": "code-chat-response",
+      "name": "Display in Chat"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v21.0/1385556181316079/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer EAAUsPIQdztkBSvayeNlvqS8cMDZCxaNlKDGdfZCyPUHY4eTHmJZB6TxrCQZCpUpxY0cdQQECi0s3EFCViuVJpHYRgjNwQfzkhK3CJj9avLzJdnvXhPGTpkZBjuLXFj3bm5mi9N6xIvuDrZAdRac365tqquqfQxRYi1t83jHhVx1qFtR6mx8cZAPPohjYorBLymb0AZDZD"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { messaging_product: 'whatsapp', to: $('Extract Message').first().json.patient_phone, type: 'text', text: { body: $('Clinic AI Receptionist Agent').first().json.output } } }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        780,
+        240
+      ],
+      "id": "http-whatsapp-send",
+      "name": "Send WhatsApp Reply via Meta"
+    }
+  ],
+  "connections": {
+    "When chat message received (Testing)": {
+      "main": [
+        [
+          {
+            "node": "Extract Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp / Instagram Webhook": {
+      "main": [
+        [
+          {
+            "node": "Extract Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Message": {
+      "main": [
+        [
+          {
+            "node": "Clinic AI Receptionist Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini (Free AI Brain)": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Clinic AI Receptionist Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conversation Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Clinic AI Receptionist Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Capture_Lead_To_CRM": {
+      "ai_tool": [
+        [
+          {
+            "node": "Clinic AI Receptionist Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Book_Google_Calendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "Clinic AI Receptionist Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Escalate_To_Human_Staff": {
+      "ai_tool": [
+        [
+          {
+            "node": "Clinic AI Receptionist Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clinic AI Receptionist Agent": {
+      "main": [
+        [
+          {
+            "node": "Is Real WhatsApp?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Real WhatsApp?": {
+      "main": [
+        [
+          {
+            "node": "Send WhatsApp Reply via Meta",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Display in Chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

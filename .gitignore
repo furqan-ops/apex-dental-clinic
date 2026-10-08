@@ -1,0 +1,4 @@
+cloudflared.exe
+*.log
+.system_generated/
+*.tmp

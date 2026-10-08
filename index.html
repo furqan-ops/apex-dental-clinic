@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Dental & Aesthetics | Comprehensive Oral Care</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+          colors: {
+            clinic: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#0d9488',
+              600: '#0f766e',
+              700: '#115e59',
+              800: '#134e4a',
+              900: '#0f172a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .chat-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .chat-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-teal-100 selection:text-teal-900">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 text-center border-b border-slate-800 flex items-center justify-center gap-3">
+    <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+      Reception Desk Active
+    </span>
+    <span>Mon &ndash; Sat: 9:00 AM &ndash; 6:00 PM &nbsp;|&nbsp; 120 Market Street, Suite 4B</span>
+    <span class="text-slate-600 hidden sm:inline">&bull;</span>
+    <a href="tel:+15556412068" class="font-medium text-white hover:text-teal-400 transition hidden sm:inline">Call (555) 641-2068</a>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-slate-900 text-teal-400 flex items-center justify-center shadow-sm group-hover:bg-teal-700 group-hover:text-white transition">
+          <i data-lucide="activity" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <span class="text-lg font-bold tracking-tight text-slate-900">Apex Dental</span>
+          <span class="block text-[10px] font-semibold text-slate-500 uppercase tracking-widest">& Aesthetics Clinic</span>
+        </div>
+      </a>
+      
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#services" class="hover:text-teal-700 transition">Services & Fees</a>
+        <a href="#about" class="hover:text-teal-700 transition">Medical Staff</a>
+        <a href="#reviews" class="hover:text-teal-700 transition">Patient Outcomes</a>
+        <a href="#faq" class="hover:text-teal-700 transition">FAQ</a>
+        <a href="#contact" class="hover:text-teal-700 transition">Location & Hours</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button onclick="toggleChat()" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-300 text-slate-700 font-medium text-xs hover:border-slate-400 hover:bg-slate-100 transition">
+          <i data-lucide="message-square" class="w-3.5 h-3.5 text-teal-600"></i>
+          Online Front Desk
+        </button>
+        <a href="https://wa.me/15556412068?text=Hello%20Apex%20Dental%2C%20I%20would%20like%20to%20inquire%20about%20scheduling%20an%20appointment." target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#25D366] text-white font-semibold text-xs hover:bg-[#20ba59] transition shadow-sm">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-5.805 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.983zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          WhatsApp AI
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-28 border-b border-slate-200 bg-gradient-to-b from-white to-slate-50">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
+      
+      <div class="lg:col-span-7">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-teal-50 border border-teal-200/80 text-teal-800 text-xs font-semibold tracking-wide mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-teal-600"></span>
+          Accepting New Patients &bull; Private Practice
+        </div>
+        
+        <h1 class="text-4xl sm:text-5xl lg:text-[54px] font-extrabold text-slate-900 tracking-tight leading-[1.12]">
+          Evidence-based dental care with clear, upfront fees.
+        </h1>
+        
+        <p class="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
+          From preventative hygiene and restorative therapy to orthodontic clear aligners. Real-time online appointment scheduling and verified fee schedules.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <button onclick="toggleChat()" class="px-5 py-3.5 rounded-lg bg-slate-900 text-white font-semibold text-xs hover:bg-slate-800 transition flex items-center gap-2 shadow-sm">
+            <i data-lucide="message-square" class="w-4 h-4 text-teal-400"></i>
+            Chat Online with Sarah (AI)
+          </button>
+          <a href="https://wa.me/15556412068?text=Hello%20Apex%20Dental%2C%20I%20would%20like%20to%20inquire%20about%20scheduling%20an%20appointment." target="_blank" class="px-5 py-3.5 rounded-lg bg-[#25D366] text-white font-bold text-xs hover:bg-[#20ba59] transition flex items-center gap-2 shadow-md">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-5.805 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.983zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            Chat on WhatsApp
+          </a>
+          <a href="#services" class="px-5 py-3.5 rounded-lg border border-slate-300 bg-white text-slate-700 font-semibold text-xs hover:bg-slate-50 hover:border-slate-400 transition flex items-center gap-2">
+            View Services & Fees
+          </a>
+        </div>
+
+        <!-- Metric Badges -->
+        <div class="mt-12 pt-8 border-t border-slate-200 grid grid-cols-3 gap-6">
+          <div>
+            <div class="text-2xl font-bold text-slate-900">4.9 / 5.0</div>
+            <div class="text-xs text-slate-500 mt-0.5">Verified Clinical Rating</div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-slate-900">&lt; 1 min</div>
+            <div class="text-xs text-slate-500 mt-0.5">Digital Scheduling</div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-slate-900">$0 Initial</div>
+            <div class="text-xs text-slate-500 mt-0.5">3D Digital Scan & Consult</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Clinical Desk Card -->
+      <div class="lg:col-span-5">
+        <div class="rounded-2xl bg-white border border-slate-200 shadow-lg p-6">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-teal-50 border border-teal-200 text-teal-800 flex items-center justify-center font-bold text-xs">
+                AP
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-900 text-xs">Digital Front Desk</h4>
+                <p class="text-[11px] text-slate-500">Live Scheduling Concierge</p>
+              </div>
+            </div>
+            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Available
+            </span>
+          </div>
+
+          <!-- Conversation Demonstration -->
+          <div class="mt-5 space-y-3 text-xs leading-relaxed">
+            <div class="flex gap-2.5">
+              <div class="w-6 h-6 rounded-md bg-slate-900 text-white flex items-center justify-center text-[10px] font-bold shrink-0">AD</div>
+              <div class="bg-slate-100 text-slate-800 p-3 rounded-xl rounded-tl-sm max-w-[85%]">
+                Good day. Welcome to Apex Dental & Aesthetics. How may I assist you with clinical services or scheduling?
+              </div>
+            </div>
+            <div class="flex gap-2.5 justify-end">
+              <div class="bg-teal-800 text-white p-3 rounded-xl rounded-tr-sm max-w-[85%]">
+                What is the fee for professional whitening, and do you have availability this Saturday?
+              </div>
+            </div>
+            <div class="flex gap-2.5">
+              <div class="w-6 h-6 rounded-md bg-slate-900 text-white flex items-center justify-center text-[10px] font-bold shrink-0">AD</div>
+              <div class="bg-slate-100 text-slate-800 p-3 rounded-xl rounded-tl-sm max-w-[85%]">
+                In-office Professional Laser Whitening is <strong>$250</strong>. Saturday operating hours are <strong>9:00 AM &ndash; 6:00 PM</strong>. Would you like to select an open slot?
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+            <button onclick="toggleChat()" class="font-semibold text-teal-700 hover:text-teal-900 flex items-center gap-1">
+              <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
+              Open Website Chat &rarr;
+            </button>
+            <a href="https://wa.me/15556412068?text=Hello%20Apex%20Dental%2C%20I%20would%20like%20to%20inquire%20about%20scheduling%20an%20appointment." target="_blank" class="font-semibold text-emerald-600 hover:text-emerald-700 flex items-center gap-1">
+              WhatsApp Bot &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 1. SERVICES & PRICING SECTION              -->
+  <!-- ========================================== -->
+  <section id="services" class="py-20 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-2xl mx-auto text-center mb-16">
+        <h2 class="text-xs font-bold text-teal-700 uppercase tracking-widest">Fee Transparency</h2>
+        <p class="mt-2 text-3xl font-extrabold text-slate-900 tracking-tight">Standard Clinical Services & Fees</p>
+        <p class="mt-3 text-slate-600 text-sm">All fees are verified upfront with zero hidden laboratory or administration costs.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Service 1 -->
+        <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 hover:border-slate-300 transition flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-teal-50 border border-teal-200 text-teal-800 flex items-center justify-center mb-4">
+              <i data-lucide="check" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-base font-bold text-slate-900">Routine Prophylaxis (Cleaning)</h3>
+            <p class="mt-2 text-xs text-slate-600 leading-relaxed">Complete plaque removal, dental calculus scaling, polishing, and comprehensive periodontal evaluation.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200 flex items-baseline justify-between">
+            <span class="text-xl font-bold text-slate-950">$80</span>
+            <div class="flex items-center gap-3">
+              <button onclick="openChatWithPrompt('I would like to book a Routine Cleaning ($80).')" class="text-xs font-semibold text-teal-700 hover:text-teal-900">Book Online</button>
+              <button onclick="openWhatsApp('Hello Apex Dental, I would like to book a Routine Cleaning ($80).')" class="text-xs font-semibold text-emerald-600 hover:text-emerald-700 flex items-center gap-1">WhatsApp &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="p-6 rounded-xl bg-white border-2 border-emerald-600 shadow-sm transition flex flex-col justify-between relative">
+          <span class="absolute -top-3 right-5 px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-600 text-white">Recommended</span>
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-center justify-center mb-4">
+              <i data-lucide="shield" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-base font-bold text-slate-900">In-Office Laser Whitening</h3>
+            <p class="mt-2 text-xs text-slate-600 leading-relaxed">Medical-grade hydrogen peroxide solution with specialized cold-light activation for up to 8 shades improvement.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200 flex items-baseline justify-between">
+            <span class="text-xl font-bold text-emerald-800">$250</span>
+            <div class="flex items-center gap-3">
+              <button onclick="openChatWithPrompt('I would like to book Professional Teeth Whitening ($250).')" class="text-xs font-semibold text-teal-700 hover:text-teal-900">Book Online</button>
+              <button onclick="openWhatsApp('Hello Apex Dental, I would like to book Professional Teeth Whitening ($250).')" class="text-xs font-semibold text-emerald-600 hover:text-emerald-700 flex items-center gap-1">WhatsApp &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 hover:border-slate-300 transition flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-teal-50 border border-teal-200 text-teal-800 flex items-center justify-center mb-4">
+              <i data-lucide="maximize" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-base font-bold text-slate-900">Digital 3D Examination & Scan</h3>
+            <p class="mt-2 text-xs text-slate-600 leading-relaxed">Full intraoral panoramic digital reconstruction and specialist doctor consultation. No obligation.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200 flex items-baseline justify-between">
+            <div>
+              <span class="text-xl font-bold text-slate-950">$0</span>
+              <span class="text-xs text-slate-400 line-through ml-1">$150</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <button onclick="openChatWithPrompt('I would like to schedule the complimentary 3D Examination and Consultation ($0).')" class="text-xs font-semibold text-teal-700 hover:text-teal-900">Book Online</button>
+              <button onclick="openWhatsApp('Hello Apex Dental, I would like to schedule the complimentary 3D Examination and Consultation ($0).')" class="text-xs font-semibold text-emerald-600 hover:text-emerald-700 flex items-center gap-1">WhatsApp &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 hover:border-slate-300 transition flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-teal-50 border border-teal-200 text-teal-800 flex items-center justify-center mb-4">
+              <i data-lucide="layers" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-base font-bold text-slate-900">Invisalign Clear Aligners</h3>
+            <p class="mt-2 text-xs text-slate-600 leading-relaxed">Orthodontic malocclusion correction using clear aligners. Includes digital treatment timeline modeling.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200 flex items-baseline justify-between">
+            <span class="text-xl font-bold text-slate-950">From $1,800</span>
+            <div class="flex items-center gap-3">
+              <button onclick="openChatWithPrompt('I would like to consult regarding Invisalign Clear Aligners.')" class="text-xs font-semibold text-teal-700 hover:text-teal-900">Inquire Online</button>
+              <button onclick="openWhatsApp('Hello Apex Dental, I would like to consult regarding Invisalign Clear Aligners.')" class="text-xs font-semibold text-emerald-600 hover:text-emerald-700 flex items-center gap-1">WhatsApp &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 hover:border-slate-300 transition flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-rose-50 border border-rose-200 text-rose-800 flex items-center justify-center mb-4">
+              <i data-lucide="alert-circle" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-base font-bold text-slate-900">Urgent Surgical Extraction</h3>
+            <p class="mt-2 text-xs text-slate-600 leading-relaxed">Same-day clinical intervention for acute pulpitis, unrestorable fractures, or severe dental infection.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200 flex items-baseline justify-between">
+            <span class="text-xl font-bold text-slate-950">$150</span>
+            <div class="flex items-center gap-3">
+              <button onclick="openChatWithPrompt('I require assistance for an urgent tooth extraction ($150).')" class="text-xs font-semibold text-rose-700 hover:text-rose-900">Urgent Triage</button>
+              <button onclick="openWhatsApp('Hello Apex Dental, I require urgent triage for an urgent tooth extraction ($150).')" class="text-xs font-semibold text-rose-600 hover:text-rose-700 flex items-center gap-1">WhatsApp &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 hover:border-slate-300 transition flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-teal-50 border border-teal-200 text-teal-800 flex items-center justify-center mb-4">
+              <i data-lucide="heart" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-base font-bold text-slate-900">Periodontal Debridement</h3>
+            <p class="mt-2 text-xs text-slate-600 leading-relaxed">Deep ultrasonic root planing and subgingival bacterial clearance to halt connective tissue recession.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200 flex items-baseline justify-between">
+            <span class="text-xl font-bold text-slate-950">$190</span>
+            <div class="flex items-center gap-3">
+              <button onclick="openChatWithPrompt('I would like to book Periodontal Debridement ($190).')" class="text-xs font-semibold text-teal-700 hover:text-teal-900">Book Online</button>
+              <button onclick="openWhatsApp('Hello Apex Dental, I would like to book Periodontal Debridement ($190).')" class="text-xs font-semibold text-emerald-600 hover:text-emerald-700 flex items-center gap-1">WhatsApp &rarr;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 2. CLINICAL DIRECTORS SECTION (#about)    -->
+  <!-- ========================================== -->
+  <section id="about" class="py-20 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-2xl mx-auto text-center mb-16">
+        <h2 class="text-xs font-bold text-teal-700 uppercase tracking-widest">Medical Staff</h2>
+        <p class="mt-2 text-3xl font-extrabold text-slate-900 tracking-tight">Board-Certified Dental Practitioners</p>
+        <p class="mt-3 text-slate-600 text-sm">Specialists trained at leading clinical academic medical centers.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Doctor 1 -->
+        <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=240&h=240&q=80" alt="Dr. Marcus Vance" class="w-16 h-16 rounded-xl object-cover border border-slate-200">
+            <div>
+              <h3 class="text-base font-bold text-slate-900">Dr. Marcus Vance, DDS</h3>
+              <p class="text-xs text-teal-700 font-medium">Cosmetic & Implant Surgery</p>
+              <p class="text-[11px] text-slate-400 mt-0.5">Harvard School of Dental Medicine</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed mb-6">
+            Clinical focus on prosthetic restorations, surgical implantology, and minimally invasive aesthetic veneer rehabilitation.
+          </p>
+          <div class="flex items-center gap-2">
+            <button onclick="openChatWithPrompt('I would like to schedule an appointment with Dr. Marcus Vance.')" class="flex-1 py-2 rounded-lg border border-slate-300 text-slate-700 text-xs font-semibold hover:bg-slate-50 transition">
+              Book Online
+            </button>
+            <button onclick="openWhatsApp('Hello Apex Dental, I would like to schedule an appointment with Dr. Marcus Vance.')" class="px-3 py-2 rounded-lg bg-[#25D366] text-white text-xs font-semibold hover:bg-[#20ba59] transition flex items-center gap-1.5 shadow-sm" title="Schedule with Dr. Vance on WhatsApp">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-5.805 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.983zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              WhatsApp
+            </button>
+          </div>
+        </div>
+
+        <!-- Doctor 2 -->
+        <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://images.unsplash.com/photo-1594824813583-05ef89ef636d?auto=format&fit=crop&w=240&h=240&q=80" alt="Dr. Elena Rostova" class="w-16 h-16 rounded-xl object-cover border border-slate-200">
+            <div>
+              <h3 class="text-base font-bold text-slate-900">Dr. Elena Rostova, DMD</h3>
+              <p class="text-xs text-teal-700 font-medium">Orthodontic Specialist</p>
+              <p class="text-[11px] text-slate-400 mt-0.5">Columbia University Dental College</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed mb-6">
+            Invisalign Premier Provider. Specializes in adult and adolescent malocclusion correction using 3D digital kinematics.
+          </p>
+          <div class="flex items-center gap-2">
+            <button onclick="openChatWithPrompt('I would like to consult with Dr. Elena Rostova regarding orthodontic treatment.')" class="flex-1 py-2 rounded-lg border border-slate-300 text-slate-700 text-xs font-semibold hover:bg-slate-50 transition">
+              Book Online
+            </button>
+            <button onclick="openWhatsApp('Hello Apex Dental, I would like to consult with Dr. Elena Rostova regarding orthodontic treatment.')" class="px-3 py-2 rounded-lg bg-[#25D366] text-white text-xs font-semibold hover:bg-[#20ba59] transition flex items-center gap-1.5 shadow-sm" title="Schedule with Dr. Rostova on WhatsApp">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-5.805 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.983zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              WhatsApp
+            </button>
+          </div>
+        </div>
+
+        <!-- Doctor 3 -->
+        <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=240&h=240&q=80" alt="Dr. Julian Hayes" class="w-16 h-16 rounded-xl object-cover border border-slate-200">
+            <div>
+              <h3 class="text-base font-bold text-slate-900">Dr. Julian Hayes, DDS</h3>
+              <p class="text-xs text-teal-700 font-medium">General & Preventive Care</p>
+              <p class="text-[11px] text-slate-400 mt-0.5">Penn Dental Medicine</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed mb-6">
+            Emphasizes gentle clinical technique, preventive oral medicine, and anxiety-free patient management.
+          </p>
+          <div class="flex items-center gap-2">
+            <button onclick="openChatWithPrompt('I would like to schedule an examination with Dr. Julian Hayes.')" class="flex-1 py-2 rounded-lg border border-slate-300 text-slate-700 text-xs font-semibold hover:bg-slate-50 transition">
+              Book Online
+            </button>
+            <button onclick="openWhatsApp('Hello Apex Dental, I would like to schedule an examination with Dr. Julian Hayes.')" class="px-3 py-2 rounded-lg bg-[#25D366] text-white text-xs font-semibold hover:bg-[#20ba59] transition flex items-center gap-1.5 shadow-sm" title="Schedule with Dr. Hayes on WhatsApp">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-5.805 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.983zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              WhatsApp
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 3. PATIENT REVIEWS (#reviews)             -->
+  <!-- ========================================== -->
+  <section id="reviews" class="py-20 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-4">
+        <div>
+          <h2 class="text-xs font-bold text-teal-700 uppercase tracking-widest">Quality Assurance</h2>
+          <p class="mt-2 text-3xl font-extrabold text-slate-900 tracking-tight">Verified Patient Feedback</p>
+        </div>
+        <div class="text-xs text-slate-500 font-medium">
+          Source: Google Business & Healthgrades Verified Submissions
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Review 1 -->
+        <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+          <p class="text-xs text-slate-700 leading-relaxed">
+            "The online scheduling assistant confirmed my appointment in under a minute without phone waiting times. The in-office laser whitening procedure was efficient and comfortable."
+          </p>
+          <div class="mt-5 pt-4 border-t border-slate-200 flex items-center justify-between">
+            <div>
+              <h4 class="font-bold text-xs text-slate-900">Sarah Jenkins</h4>
+              <p class="text-[10px] text-slate-500">Professional Whitening Patient</p>
+            </div>
+            <span class="text-xs font-bold text-slate-900">5.0 / 5.0</span>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+          <p class="text-xs text-slate-700 leading-relaxed">
+            "Transparent pricing was a refreshing difference. Dr. Hayes explained each step of the prophylactic cleaning clearly. The digital 3D scans provided an accurate baseline."
+          </p>
+          <div class="mt-5 pt-4 border-t border-slate-200 flex items-center justify-between">
+            <div>
+              <h4 class="font-bold text-xs text-slate-900">Michael Reynolds</h4>
+              <p class="text-[10px] text-slate-500">Preventative Care Patient</p>
+            </div>
+            <span class="text-xs font-bold text-slate-900">5.0 / 5.0</span>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+          <p class="text-xs text-slate-700 leading-relaxed">
+            "Dr. Rostova mapped out my clear aligner progression digitally. Being able to communicate with the reception desk directly over WhatsApp made rescheduling seamless."
+          </p>
+          <div class="mt-5 pt-4 border-t border-slate-200 flex items-center justify-between">
+            <div>
+              <h4 class="font-bold text-xs text-slate-900">Taylor Chen</h4>
+              <p class="text-[10px] text-slate-500">Orthodontic Patient</p>
+            </div>
+            <span class="text-xs font-bold text-slate-900">5.0 / 5.0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 4. FAQ ACCORDION SECTION (#faq)            -->
+  <!-- ========================================== -->
+  <section id="faq" class="py-20 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-xs font-bold text-teal-700 uppercase tracking-widest">Information</h2>
+        <p class="mt-2 text-3xl font-extrabold text-slate-900 tracking-tight">Frequently Addressed Questions</p>
+      </div>
+
+      <div class="space-y-3">
+        <details class="group bg-white rounded-xl p-5 border border-slate-200 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+          <summary class="flex items-center justify-between font-bold text-xs sm:text-sm text-slate-900">
+            <span>What does the complimentary initial consultation include?</span>
+            <span class="text-slate-400 group-open:rotate-180 transition">
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </span>
+          </summary>
+          <p class="mt-3 text-xs text-slate-600 leading-relaxed">
+            The session includes a full panoramic 3D intraoral digital capture, periodontal diagnostic review, and a direct consultation with our lead dentist to discuss suitable clinical protocols.
+          </p>
+        </details>
+
+        <details class="group bg-white rounded-xl p-5 border border-slate-200 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+          <summary class="flex items-center justify-between font-bold text-xs sm:text-sm text-slate-900">
+            <span>What are the clinic's weekend operating hours?</span>
+            <span class="text-slate-400 group-open:rotate-180 transition">
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </span>
+          </summary>
+          <p class="mt-3 text-xs text-slate-600 leading-relaxed">
+            We operate on Saturdays from 9:00 AM to 6:00 PM. We remain closed on Sundays. Our automated front desk platform accepts online reservations 24 hours a day.
+          </p>
+        </details>
+
+        <details class="group bg-white rounded-xl p-5 border border-slate-200 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+          <summary class="flex items-center justify-between font-bold text-xs sm:text-sm text-slate-900">
+            <span>What protocol is followed for emergency clinical triage?</span>
+            <span class="text-slate-400 group-open:rotate-180 transition">
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </span>
+          </summary>
+          <p class="mt-3 text-xs text-slate-600 leading-relaxed">
+            Inquiries concerning active hemorrhaging or trauma bypass automated workflows and generate high-priority notifications to our on-call clinical staff.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 5. LOCATION & CONTACT (#contact)           -->
+  <!-- ========================================== -->
+  <section id="contact" class="py-20 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-xs font-bold text-teal-700 uppercase tracking-widest">Directions & Facility</h2>
+          <p class="mt-2 text-3xl font-extrabold text-slate-900 tracking-tight">Location & Contact Information</p>
+          
+          <div class="mt-8 space-y-4">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="text-xs font-bold text-slate-900 mb-1">Facility Address</div>
+              <p class="text-xs text-slate-600">120 Market Street, Suite 4B &bull; Downtown Medical Building</p>
+              <p class="text-[11px] text-slate-500 mt-1">Dedicated underground patient parking available via Ramp 2.</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="text-xs font-bold text-slate-900 mb-1">Clinical Hours</div>
+              <div class="text-xs text-slate-600 space-y-1 mt-2">
+                <div class="flex justify-between">
+                  <span>Monday &ndash; Friday</span>
+                  <span class="font-medium text-slate-900">9:00 AM &ndash; 6:00 PM</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Saturday</span>
+                  <span class="font-medium text-slate-900">9:00 AM &ndash; 6:00 PM</span>
+                </div>
+                <div class="flex justify-between text-slate-400">
+                  <span>Sunday</span>
+                  <span>Closed</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+              <div>
+                <div class="text-xs font-bold text-slate-900">Direct Telephone</div>
+                <div class="text-xs text-slate-600 mt-0.5">(555) 641-2068 &bull; Reception Desk</div>
+              </div>
+              <a href="tel:+15556412068" class="text-xs font-semibold text-teal-700 hover:underline">Place Call &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Appointment Scheduling Card -->
+        <div class="rounded-2xl bg-slate-900 text-white p-8 border border-slate-800">
+          <h3 class="text-xl font-bold tracking-tight">Direct Patient Intake</h3>
+          <p class="mt-2 text-xs text-slate-400 leading-relaxed">
+            Submit your contact information to reserve a consultation slot directly with our clinical desk.
+          </p>
+
+          <form onsubmit="handleContactFormSubmit(event)" class="mt-6 space-y-4">
+            <div>
+              <label class="block text-[11px] font-medium text-slate-300 mb-1">Full Legal Name</label>
+              <input id="contact-name" type="text" placeholder="e.g. Alex Rivera" required class="w-full bg-slate-800 text-white text-xs px-3.5 py-2.5 rounded-lg border border-slate-700 focus:border-teal-500 focus:outline-none transition">
+            </div>
+            <div>
+              <label class="block text-[11px] font-medium text-slate-300 mb-1">Mobile Contact (WhatsApp / SMS)</label>
+              <input id="contact-phone" type="tel" placeholder="e.g. +1 (555) 0199" required class="w-full bg-slate-800 text-white text-xs px-3.5 py-2.5 rounded-lg border border-slate-700 focus:border-teal-500 focus:outline-none transition">
+            </div>
+            <div>
+              <label class="block text-[11px] font-medium text-slate-300 mb-1">Required Clinical Service</label>
+              <select id="contact-service" class="w-full bg-slate-800 text-white text-xs px-3.5 py-2.5 rounded-lg border border-slate-700 focus:border-teal-500 focus:outline-none transition">
+                <option value="Routine Prophylaxis ($80)">Routine Prophylaxis ($80)</option>
+                <option value="Professional Teeth Whitening ($250)">Professional Teeth Whitening ($250)</option>
+                <option value="Complimentary Initial 3D Scan ($0)">Complimentary Initial 3D Scan ($0)</option>
+                <option value="Invisalign Orthodontic Consultation">Invisalign Orthodontic Consultation</option>
+                <option value="Urgent Surgical Extraction ($150)">Urgent Surgical Extraction ($150)</option>
+              </select>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center gap-3">
+              <button type="submit" class="w-full sm:flex-1 py-3.5 rounded-lg bg-teal-600 text-white font-semibold text-xs hover:bg-teal-700 transition shadow-sm">
+                Submit to Online Front Desk
+              </button>
+              <button type="button" onclick="const n=document.getElementById('contact-name').value;const p=document.getElementById('contact-phone').value;const s=document.getElementById('contact-service').value;openWhatsApp(`Hello Apex Dental, I would like to schedule an appointment. Name: ${n||'Patient'}, Phone: ${p||'Not provided'}, Service: ${s}`);" class="w-full sm:w-auto px-5 py-3.5 rounded-lg bg-[#25D366] text-white font-bold text-xs hover:bg-[#20ba59] transition flex items-center justify-center gap-2 shadow-sm">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-5.805 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.983zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                <span>WhatsApp</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white text-slate-600 text-xs py-10 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2 font-bold text-slate-900">
+        <i data-lucide="activity" class="w-4 h-4 text-teal-700"></i>
+        Apex Dental & Aesthetics Clinic
+      </div>
+      <div class="text-[11px] text-slate-500">
+        &copy; 2026 Apex Healthcare Group. All rights reserved. &bull; Standard Operating Guidelines
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================== -->
+  <!-- FLOATING ACTION DOCK (BOTH WEBSITE CHAT & WHATSAPP)      -->
+  <!-- ======================================================== -->
+  <div class="fixed bottom-6 right-6 z-50 flex items-center gap-2.5">
+    <!-- WhatsApp Direct Button -->
+    <a href="https://wa.me/15556412068?text=Hello%20Apex%20Dental%2C%20I%20would%20like%20to%20inquire%20about%20scheduling%20an%20appointment." target="_blank" class="flex items-center gap-2 px-3.5 py-3 rounded-full bg-[#25D366] text-white shadow-xl hover:bg-[#20ba59] hover:scale-105 active:scale-95 transition transform text-xs font-semibold" title="Chat on WhatsApp (+1 555 641-2068)">
+      <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-5.805 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.983zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+      </svg>
+      <span class="hidden sm:inline">WhatsApp</span>
+    </a>
+
+    <!-- Website Chat Toggle Button -->
+    <button onclick="toggleChat()" class="flex items-center gap-2 px-4 py-3 rounded-full bg-slate-900 text-white shadow-xl hover:bg-slate-800 hover:scale-105 active:scale-95 transition transform text-xs font-semibold" title="Chat with Sarah on Website">
+      <i id="chat-icon" data-lucide="message-square" class="w-5 h-5 text-teal-400"></i>
+      <span>Front Desk AI</span>
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+    </button>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- WEBSITE CHAT WINDOW (LIVE INTERACTIVE AI RECEPTIONIST)   -->
+  <!-- ======================================================== -->
+  <div id="chat-window" class="fixed bottom-24 right-6 z-50 w-[92vw] sm:w-[420px] h-[580px] bg-white rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden hidden transition-all duration-200 transform scale-95 opacity-0">
+    
+    <!-- Chat Header -->
+    <div class="bg-slate-900 text-white px-4 py-3.5 flex items-center justify-between border-b border-slate-800">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-teal-800 text-white font-bold flex items-center justify-center text-xs shadow-sm">
+          AD
+        </div>
+        <div>
+          <h4 class="font-bold text-xs tracking-tight">Patient Care Desk</h4>
+          <p class="text-[11px] text-emerald-400 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            Sarah &bull; AI Receptionist Online
+          </p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="https://wa.me/15556412068?text=Hello%20Apex%20Dental%2C%20I%20am%20switching%20from%20the%20website%20chat%20to%20WhatsApp." target="_blank" class="text-[11px] px-2.5 py-1 rounded bg-[#25D366]/20 text-[#25D366] hover:bg-[#25D366]/30 font-medium transition flex items-center gap-1" title="Switch to WhatsApp">
+          <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-5.805 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.983zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          WhatsApp
+        </a>
+        <button onclick="toggleChat()" class="text-slate-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Action Filter Chips -->
+    <div class="bg-slate-50 border-b border-slate-200 px-3 py-2 flex items-center gap-2 overflow-x-auto text-[11px] font-medium text-slate-700 whitespace-nowrap chat-scrollbar">
+      <button onclick="sendQuickMessage('What is the fee for professional teeth whitening and what are your Saturday hours?')" class="px-2.5 py-1 rounded-full bg-white border border-slate-200 hover:border-slate-300 transition shadow-xs">
+        Whitening & Hours
+      </button>
+      <button onclick="sendQuickMessage('I would like to book an appointment for John Doe, phone 555-0199 this Friday at 3:00 PM.')" class="px-2.5 py-1 rounded-full bg-white border border-slate-200 hover:border-slate-300 transition shadow-xs">
+        Book Appointment
+      </button>
+      <button onclick="sendQuickMessage('I have acute bleeding and require urgent clinical triage.')" class="px-2.5 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-700 hover:bg-rose-100 transition shadow-xs">
+        Urgent Triage
+      </button>
+    </div>
+
+    <!-- Messages Container -->
+    <div id="messages-container" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs chat-scrollbar bg-slate-50/60">
+      <!-- Welcome Message -->
+      <div class="flex gap-2.5">
+        <div class="w-7 h-7 rounded-lg bg-slate-900 text-teal-400 flex items-center justify-center text-[10px] font-bold shrink-0">AD</div>
+        <div class="bg-white border border-slate-200 text-slate-800 p-3.5 rounded-2xl rounded-tl-sm shadow-sm max-w-[85%] leading-relaxed">
+          Welcome to <strong>Apex Dental & Aesthetics</strong>.<br><br>
+          I am Sarah, your AI Patient Care Coordinator. I can verify treatment fees, operating hours, or reserve a clinical consultation slot for you directly.<br><br>
+          How may I assist you today?
+        </div>
+      </div>
+    </div>
+
+    <!-- Typing Indicator -->
+    <div id="typing-indicator" class="hidden px-4 py-2 flex items-center gap-2 text-xs text-slate-500 bg-slate-50/60">
+      <div class="w-7 h-7 rounded-lg bg-slate-900 text-teal-400 flex items-center justify-center text-[10px] font-bold shrink-0">AD</div>
+      <div class="bg-white border border-slate-200 px-3 py-1.5 rounded-lg flex items-center gap-1 shadow-sm">
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-pulse"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-pulse [animation-delay:0.2s]"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-pulse [animation-delay:0.4s]"></span>
+      </div>
+    </div>
+
+    <!-- Input Box -->
+    <div class="p-3 bg-white border-t border-slate-200">
+      <form id="chat-form" onsubmit="handleChatSubmit(event)" class="flex items-center gap-2">
+        <input 
+          id="chat-input"
+          type="text" 
+          placeholder="Type an inquiry or scheduling request..."
+          class="flex-1 bg-slate-100 text-slate-800 text-xs px-3.5 py-2.5 rounded-lg border border-transparent focus:border-slate-400 focus:bg-white focus:outline-none transition"
+          autocomplete="off"
+        />
+        <button type="submit" class="w-8 h-8 rounded-lg bg-teal-700 text-white flex items-center justify-center hover:bg-teal-800 transition shrink-0">
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </form>
+    </div>
+
+  </div>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    let chatOpen = false;
+    const chatWindow = document.getElementById('chat-window');
+    const chatIcon = document.getElementById('chat-icon');
+    const messagesContainer = document.getElementById('messages-container');
+    const typingIndicator = document.getElementById('typing-indicator');
+    const chatInput = document.getElementById('chat-input');
+
+    function toggleChat() {
+      chatOpen = !chatOpen;
+      if (chatOpen) {
+        chatWindow.classList.remove('hidden');
+        setTimeout(() => {
+          chatWindow.classList.remove('scale-95', 'opacity-0');
+          chatWindow.classList.add('scale-100', 'opacity-100');
+          chatInput.focus();
+        }, 10);
+        chatIcon.setAttribute('data-lucide', 'x');
+      } else {
+        chatWindow.classList.remove('scale-100', 'opacity-100');
+        chatWindow.classList.add('scale-95', 'opacity-0');
+        setTimeout(() => {
+          chatWindow.classList.add('hidden');
+        }, 200);
+        chatIcon.setAttribute('data-lucide', 'message-square');
+      }
+      lucide.createIcons();
+    }
+
+    function openChatWithPrompt(promptText) {
+      if (!chatOpen) toggleChat();
+      sendQuickMessage(promptText);
+    }
+
+    function sendQuickMessage(text) {
+      chatInput.value = text;
+      handleChatSubmit(new Event('submit'));
+    }
+
+    function openWhatsApp(customText) {
+      const targetPhone = "15556412068";
+      const message = customText || "Hello Apex Dental, I would like to inquire about scheduling an appointment.";
+      const url = `https://wa.me/${targetPhone}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    }
+
+    // Stateful Clinical Intake Session
+    const patientSession = {
+      state: 'idle', // 'idle' | 'booking' | 'confirmed'
+      name: '',
+      phone: '',
+      service: '',
+      preferredTime: ''
+    };
+
+    function parseAppointmentDetails(text) {
+      let found = false;
+      const phoneMatch = text.match(/(?:\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}|\b\d{10,13}\b/);
+      if (phoneMatch) {
+        patientSession.phone = phoneMatch[0];
+        found = true;
+      }
+
+      const nameMatch = text.match(/(?:name[:\s]+is|my name is|i am|name[:\s]+)([a-zA-Z\s]{2,25})/i);
+      if (nameMatch) {
+        patientSession.name = nameMatch[1].trim();
+        found = true;
+      } else if (!patientSession.name) {
+        const parts = text.split(/[,;\n]/).map(s => s.trim());
+        for (const p of parts) {
+          const pLower = p.toLowerCase();
+          if (/^[a-zA-Z\s]{3,25}$/.test(p) && 
+              !['hello', 'hi', 'hey', 'book', 'appointment', 'schedule', 'whitening', 'cleaning', 'invisalign', 'consultation', 'friday', 'monday', 'tomorrow', 'today'].some(w => pLower.includes(w))) {
+            patientSession.name = p;
+            found = true;
+            break;
+          }
+        }
+      }
+
+      const lower = text.toLowerCase();
+      if (lower.includes('whitening')) {
+        patientSession.service = 'In-Office Laser Teeth Whitening ($250)';
+        found = true;
+      } else if (lower.includes('clean') || lower.includes('prophylaxis')) {
+        patientSession.service = 'Routine Dental Cleaning ($80)';
+        found = true;
+      } else if (lower.includes('invisalign') || lower.includes('aligner') || lower.includes('braces')) {
+        patientSession.service = 'Invisalign Clear Aligners (From $1,800)';
+        found = true;
+      } else if (lower.includes('extract') || lower.includes('pulled')) {
+        patientSession.service = 'Urgent Tooth Extraction ($150)';
+        found = true;
+      } else if (lower.includes('3d') || lower.includes('scan') || lower.includes('consult')) {
+        patientSession.service = 'Initial Consultation & 3D Scan ($0 Complimentary)';
+        found = true;
+      }
+
+      const timeMatch = text.match(/(?:(?:monday|tuesday|wednesday|thursday|friday|saturday|tomorrow|today)(?:\s+(?:at\s+)?\d{1,2}(?::\d{2})?\s*(?:am|pm)?)?|\b\d{1,2}(?::\d{2})?\s*(?:am|pm)\b|\b\d{1,2}\/\d{1,2}\b)/i);
+      if (timeMatch) {
+        patientSession.preferredTime = timeMatch[0];
+        found = true;
+      }
+
+      return found;
+    }
+
+    function generateFrontDeskReply(message) {
+      const lower = message.toLowerCase().trim();
+      parseAppointmentDetails(message);
+
+      // 1. Clinical Emergency & Urgent Triage
+      if (lower.includes('bleed') || lower.includes('severe pain') || lower.includes('broken tooth') || lower.includes('trauma') || lower.includes('swelling') || lower.includes('emergency')) {
+        return "I have flagged your request for **urgent clinical triage**. If you are experiencing acute pain, dental trauma, or severe swelling, please call our emergency desk directly at **(555) 641-2068** or message us directly on [WhatsApp](https://wa.me/15556412068). For uncontrollable bleeding, please proceed to the nearest emergency department.";
+      }
+
+      // 2. Unapproved Medical Requests / Prescriptions
+      if (lower.includes('botox') || lower.includes('antibiotic') || lower.includes('prescription') || lower.includes('painkiller') || lower.includes('narcotic') || lower.includes('fillers')) {
+        return "We do not issue medical prescriptions or quote unlisted aesthetic procedures over online chat. I have recorded your inquiry for our clinical director to review directly.";
+      }
+
+      // 3. Human Escalation
+      if (lower.includes('human') || lower.includes('real person') || lower.includes('speak to someone') || lower.includes('manager') || lower.includes('receptionist')) {
+        return "I have notified our front-desk manager. A member of our clinical coordination team will connect with you shortly. You can also reach our desk immediately at **(555) 641-2068** or chat directly on [WhatsApp](https://wa.me/15556412068).";
+      }
+
+      // 4. Clinical Hours & Location
+      if (lower.includes('hour') || lower.includes('timing') || lower.includes('when are you open') || lower.includes('address') || lower.includes('location') || lower.includes('where are you') || lower.includes('directions')) {
+        return "Apex Dental & Aesthetics Clinic is open **Monday through Saturday from 9:00 AM to 6:00 PM** (closed on Sundays). We are located at **120 Market Street, Suite 4B**. Would you like to schedule an appointment?";
+      }
+
+      // 5. Pricing & Treatment Fees
+      if (lower.includes('price') || lower.includes('fee') || lower.includes('cost') || lower.includes('rate') || lower.includes('how much')) {
+        if (lower.includes('whitening')) {
+          return "Our **In-Office Laser Teeth Whitening** fee is **$250**. It includes a full shade analysis and in-chair laser activation. Would you like to schedule this treatment?";
+        }
+        if (lower.includes('cleaning') || lower.includes('clean')) {
+          return "Our **Routine Prophylaxis (Cleaning)** fee is **$80**. Would you like to schedule an appointment for cleaning?";
+        }
+        if (lower.includes('invisalign')) {
+          return "Our **Invisalign Clear Aligners** treatment plans start from **$1,800**, beginning with a **Complimentary 3D Scan ($0)**. Would you like to book your free scan?";
+        }
+        if (lower.includes('extraction')) {
+          return "Our **Urgent Tooth Extraction** fee is **$150**. Would you like to schedule an appointment with our oral surgeon?";
+        }
+        return "Our standard clinical fee schedule:\n• **Routine Prophylaxis (Cleaning):** $80\n• **In-Office Laser Teeth Whitening:** $250\n• **Initial Consultation & 3D Scan:** $0 (Complimentary)\n• **Urgent Tooth Extraction:** $150\n• **Invisalign Clear Aligners:** From $1,800\n\nWhich treatment can I help you schedule?";
+      }
+
+      // 6. Clinicians & Specialists
+      if (lower.includes('doctor') || lower.includes('dentist') || lower.includes('vance') || lower.includes('rostova')) {
+        return "Our clinical practice is led by **Dr. Julian Vance, DDS** (Prosthodontics & Oral Implantology) and **Dr. Elena Rostova, MD** (Cosmetic Dermatology & Facial Aesthetics). Would you like to book a consultation with one of our specialists?";
+      }
+
+      // 7. Booking & Appointment Intake Flow
+      const isBookingIntent = lower.includes('book') || lower.includes('appointment') || lower.includes('schedule') || lower.includes('visit') || lower.includes('reserve');
+      
+      if (isBookingIntent || patientSession.state === 'booking') {
+        patientSession.state = 'booking';
+
+        const hasName = Boolean(patientSession.name);
+        const hasPhone = Boolean(patientSession.phone);
+        const hasTime = Boolean(patientSession.preferredTime);
+        const hasService = Boolean(patientSession.service);
+
+        // When patient provided Name & Phone (or details are populated)
+        if (hasName && hasPhone) {
+          patientSession.state = 'confirmed';
+          const serviceText = patientSession.service || 'General Clinical Consultation';
+          const timeText = patientSession.preferredTime || 'Upcoming opening';
+          return `Thank you, **${patientSession.name}**. Your appointment request has been officially recorded:\n\n• **Treatment:** ${serviceText}\n• **Patient Phone:** ${patientSession.phone}\n• **Requested Slot:** ${timeText}\n• **Location:** 120 Market Street, Suite 4B\n\nOur front-desk manager will contact you at **${patientSession.phone}** to confirm the exact time slot. For immediate confirmation, you can also reach us on [WhatsApp](https://wa.me/15556412068).`;
+        }
+
+        // Asking for required details step by step
+        if (!hasName && !hasPhone) {
+          return "I would be pleased to assist you with scheduling your appointment.\n\nTo arrange your booking, please provide:\n1. **Your Full Name**\n2. **Contact Phone Number**\n3. **Preferred Treatment** (Cleaning, Whitening, 3D Consultation, etc.)\n4. **Preferred Day & Time** (Mon–Sat, 9:00 AM – 6:00 PM)\n\nWhat is your **Full Name** and **Phone Number**?";
+        }
+
+        if (hasName && !hasPhone) {
+          return `Thank you, **${patientSession.name}**. What is the best **phone number** to reach you at, and which **day and time** works best for your visit?`;
+        }
+
+        if (!hasName && hasPhone) {
+          return `Thank you! I have recorded your phone number (${patientSession.phone}). Could you please share your **full name** and the **treatment** you wish to schedule?`;
+        }
+      }
+
+      // 8. Polite Greetings
+      if (lower === 'hello' || lower === 'hi' || lower === 'hey' || lower.startsWith('hello') || lower.startsWith('hi ') || lower.startsWith('hey ') || lower.includes('good morning') || lower.includes('good afternoon') || lower.includes('good evening') || lower.includes('assalam')) {
+        return "Welcome to Apex Dental & Aesthetics Clinic. I am Sarah, the Patient Care Coordinator.\n\nHow may I assist you today? I can provide fee details, explain our treatments, or assist you with scheduling a clinical consultation.";
+      }
+
+      // 9. Acknowledgement / Thank You
+      if (lower.includes('thank') || lower === 'ok' || lower === 'okay' || lower.includes('great') || lower.includes('perfect') || lower.includes('understood')) {
+        return "You are very welcome! Please let me know if you have any questions about our care or if you would like to proceed with booking a visit.";
+      }
+
+      // 10. Default Helpful Guidance
+      return "I am Sarah, Patient Care Coordinator at Apex Dental & Aesthetics Clinic. We offer **Routine Cleaning ($80)**, **Laser Whitening ($250)**, **Complimentary 3D Consultations ($0)**, and **Invisalign Orthodontics**.\n\nWould you like to schedule an appointment or inquire about our clinical services?";
+    }
+
+    function handleContactFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value;
+      const phone = document.getElementById('contact-phone').value;
+      const service = document.getElementById('contact-service').value;
+
+      patientSession.name = name;
+      patientSession.phone = phone;
+      patientSession.service = service;
+
+      openChatWithPrompt(`I would like to request an appointment. Name: ${name}, Phone: ${phone}, Service: ${service}.`);
+    }
+
+    async function handleChatSubmit(e) {
+      if (e) e.preventDefault();
+      const message = chatInput.value.trim();
+      if (!message) return;
+
+      appendMessage('user', message);
+      chatInput.value = '';
+
+      typingIndicator.classList.remove('hidden');
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+      setTimeout(() => {
+        typingIndicator.classList.add('hidden');
+        const reply = generateFrontDeskReply(message);
+        appendMessage('bot', reply);
+      }, 500);
+    }
+
+    function appendMessage(sender, text) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = sender === 'user' ? 'flex justify-end gap-2' : 'flex gap-2.5';
+
+      let formattedText = text
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" class="text-teal-700 underline font-semibold hover:text-teal-900">$1</a>')
+        .replace(/\n/g, '<br>');
+
+      if (sender === 'user') {
+        msgDiv.innerHTML = `
+          <div class="bg-teal-800 text-white p-3 rounded-xl rounded-tr-sm shadow-sm max-w-[85%] leading-relaxed">
+            ${formattedText}
+          </div>
+        `;
+      } else {
+        msgDiv.innerHTML = `
+          <div class="w-7 h-7 rounded-lg bg-slate-900 text-teal-400 flex items-center justify-center text-[10px] font-bold shrink-0">AD</div>
+          <div class="bg-white border border-slate-200 text-slate-800 p-3 rounded-xl rounded-tl-sm shadow-sm max-w-[85%] leading-relaxed">
+            ${formattedText}
+          </div>
+        `;
+      }
+
+      messagesContainer.appendChild(msgDiv);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+  </script>
+</body>
+</html>
